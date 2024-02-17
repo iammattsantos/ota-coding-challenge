@@ -9,15 +9,10 @@ router.delete('/notes/:id', (req: Request, res: Response) => {
   let body: any;
 
   try {
-    if (!req.params.id) {
-      code = StatusCodes.BAD_REQUEST;
-      body = 'Missing id';
-    } else {
-      deleteNote(req.params.id);
+    deleteNote(req.params.id);
 
-      code = StatusCodes.NO_CONTENT;
-      body = null;
-    }
+    code = StatusCodes.NO_CONTENT;
+    body = null;
   } catch (error: any) {
     code = StatusCodes.INTERNAL_SERVER_ERROR;
     body = error;

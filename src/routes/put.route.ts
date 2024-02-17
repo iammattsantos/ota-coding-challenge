@@ -4,7 +4,7 @@ import { updateNote } from '../services';
 
 export const router = Router();
 
-router.put('/notes', (req: Request, res: Response) => {
+router.put('/notes/:id', (req: Request, res: Response) => {
   let code: number;
   let body: any;
 
@@ -13,7 +13,7 @@ router.put('/notes', (req: Request, res: Response) => {
       code = StatusCodes.BAD_REQUEST;
       body = 'Title and body are required';
     } else {
-      updateNote(req.body.id, req.body.title, req.body.body);
+      updateNote(req.params.id, req.body.title, req.body.body);
 
       code = StatusCodes.NO_CONTENT;
       body = null;
